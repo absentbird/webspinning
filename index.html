@@ -12,37 +12,71 @@
 
     <!-- CSS styling -->
     <style>
-      body {
-        background: tan;
-      }
       h1 {
-        color: teal;
+        cursor: pointer;
       }
     </style>
 
   </head>
-  <body>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
 
     <!-- Page content -->
-    <div id="app">
-      <h1 class="text-3xl font-bold underline">{{ heading }}</h1>
-      <p>{{ content }}</p>
+    <div id="app" >
+      <section class="max-w-4xl mx-auto px-6 pt-20 pb-6 text-center">
+        <h1 class="text-4xl sm:text-6xl font-extrabold mb-6">{{ heading }}</h1>
+        <p class="text-slate-400 text-base sm:text-lg mx-auto">{{ content }}</p>
+      </section>
+
+      <!-- Card grid -->
+      <section id="features" class="max-w-5xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div v-for="card in cards" class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 hover:border-indigo-500/50 hover:scale-[1.02] transition-all duration-300">
+            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold mb-4">{{ card.emoji }}</div>
+            <h3 class="font-semibold text-white mb-2">{{ card.title }}</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">{{ card.text }}</p>
+          </div>
+        </div>
+      </section>
+
     </div>
+
+    <!-- Footer -->
+    <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800/60 text-center text-xs text-slate-500">
+        Built with Tailwind CSS CDN for education and development, not for production.
+    </footer>
 
     <!-- JavaScript code -->
     <script type="module">
       // Import Vue
-      import { createapp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+      import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
       // Set variables and mount app
-      createapp({
+      createApp({
         setup() {
-          const heading = ref('heading')
+          const heading = ref('Heading')
           const content = ref('lorem ipsum...')
+          const cards = ref([
+            {
+              title: 'Card 1',
+              emoji: '🎯',
+              text: 'This is a test.'
+            },
+            {
+              title: 'Card 2',
+              emoji: '🎯',
+              text: 'This is a test.'
+            },
+            {
+              title: 'Card 3',
+              emoji: '🎯',
+              text: 'This is a test.'
+            }
+          ])
 
           return {
             heading,
-            content
+            content,
+            cards
           }
         }
       }).mount('#app')
