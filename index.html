@@ -1,34 +1,52 @@
-<!doctype html> <!-- HTML 5 -->
-<html>
-
+<!doctype html>
+<html lang="en">
   <head>
+
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Basic Website</title>
-  </head>
 
+    <!-- Imports -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- CSS styling -->
+    <style>
+      body {
+        background: tan;
+      }
+      h1 {
+        color: teal;
+      }
+    </style>
+
+  </head>
   <body>
+
+    <!-- Page content -->
     <div id="app">
       <h1 class="text-3xl font-bold underline">{{ heading }}</h1>
       <p>{{ content }}</p>
     </div>
-  </body>
 
-  <script type="module">
-    import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    <!-- JavaScript code -->
+    <script type="module">
+      // Import Vue
+      import { createapp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
-    createApp({
-      setup() {
-        const heading = ref('Heading')
-        const content = ref('Lorem ipsum...')
+      // Set variables and mount app
+      createapp({
+        setup() {
+          const heading = ref('heading')
+          const content = ref('lorem ipsum...')
 
-        return {
-          heading,
-          content
+          return {
+            heading,
+            content
+          }
         }
-      }
-    }).mount('#app')
-  </script>
+      }).mount('#app')
+    </script>
 
+  </body>
 </html>
